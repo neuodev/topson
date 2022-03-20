@@ -1,2 +1,4 @@
 venv
 client/node_modules
+__pycache__
+db.*
