@@ -34,3 +34,7 @@
 ## Advice
 
 1. When you face something you don't know stop and learn it! **_Give it the time!_**
+
+## Database Schema
+
+[DrawSQL](https://drawsql.app/no-sim/diagrams/topson#)
