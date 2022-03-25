@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginScreen from "./screens/LoginScreen";
 import NoPage from "./screens/NoPage";
 import RegisterScreen from "./screens/RegisterScreen";
+import "./index.css";
 
 function App() {
   return (
