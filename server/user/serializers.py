@@ -1,4 +1,5 @@
 from datetime import datetime
+from signal import raise_signal
 from rest_framework import serializers
 from .models import User
 import re
@@ -50,3 +51,14 @@ class UserSerializer(serializers.ModelSerializer):
         user = User.objects.create(**validated_data)
 
         return user
+
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    password = serializers.CharField()
+
+    def validate(self, validated_data):
+        try:
+            User.objects.get(username=validated_data['username'], password=validated_data['password'])
+        except:
+            raise serializers.ValidationError('invalid credentials')
+        return validated_data
