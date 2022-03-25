@@ -36,12 +36,17 @@ class UserSerializer(serializers.ModelSerializer):
     def validate_password(self, value):
         for pass_re in password_regex:
             match = re.match(pass_re['re'], value)
-            print(match)
             if not match:
                 raise serializers.ValidationError(pass_re['message'])
-        
         return value
     
     class Meta:
         model = User
         fields = ['id', 'email', 'username', 'password', 'is_active', 'first_name', 'last_name']
+    
+    def create(self, validated_data):
+        validated_data['last_login'] = datetime.now()
+        # Check for exising user
+        user = User.objects.create(**validated_data)
+
+        return user
