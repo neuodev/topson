@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginScreen from "./screens/LoginScreen";
+import NoPage from "./screens/NoPage";
 import RegisterScreen from "./screens/RegisterScreen";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<LoginScreen />} />
           <Route path="/register" element={<RegisterScreen />} />
+          <Route path="*" element={<NoPage />} />
         </Routes>
       </Router>
     </div>
