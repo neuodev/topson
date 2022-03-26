@@ -12,5 +12,7 @@ export const userRegisterReducer = (state = {}, { type, payload }) => {
       return { loading: false, error: payload };
     case USER_REGISTER_SUCCESS:
       return { loading: false };
+    default:
+      return state;
   }
 };
