@@ -4,7 +4,7 @@ import TextField from "../common/TextField";
 
 const RegisterForm = () => {
   return (
-    <div className="w-96 bg-white px-8 py-10 rounded-lg">
+    <div className="w-96 bg-white px-8 py-10 rounded-lg shadow-2xl">
       <div className="mb-6">
         <TextField placeholder="First Name" />
       </div>
