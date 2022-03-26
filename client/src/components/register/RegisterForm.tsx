@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../common/Button";
 import TextField from "../common/TextField";
 
 const RegisterForm = () => {
@@ -15,6 +16,14 @@ const RegisterForm = () => {
       </div>
       <div className="mb-6">
         <TextField placeholder="Password" isPassword />
+      </div>
+      <div className="mb-6">
+        <TextField placeholder="Password Confirmation" isPassword />
+      </div>
+
+      <div>
+        <Button primary>Register</Button>
+        <Button>Login</Button>
       </div>
     </div>
   );
