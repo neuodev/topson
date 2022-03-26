@@ -21,10 +21,12 @@ const RegisterForm = () => {
         <TextField placeholder="Password Confirmation" isPassword />
       </div>
 
-      <div>
-        <Button primary>Register</Button>
-        <Button>Login</Button>
+      <div className="mb-4">
+        <Button onClick={() => {}} primary>
+          Register
+        </Button>
       </div>
+      <Button onClick={() => {}}>Login</Button>
     </div>
   );
 };

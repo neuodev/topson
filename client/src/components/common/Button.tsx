@@ -1,6 +1,12 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
-const Button = ({ children, primary, onClick }) => {
+type Props = {
+  children: ReactNode;
+  primary?: boolean;
+  onClick(): void;
+};
+
+const Button: React.FC<Props> = ({ children, primary, onClick }) => {
   return (
     <button
       onClick={onClick}
