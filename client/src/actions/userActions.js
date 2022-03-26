@@ -5,7 +5,7 @@ import {
   USER_REGISTER_SUCCESS,
 } from "../constants/userConstants";
 
-export const userLoginAction = (formData) => async (dispatch) => {
+export const userRegisterAction = (formData) => async (dispatch) => {
   try {
     dispatch({
       type: USER_REGISTER_REQUEST,
