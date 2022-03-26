@@ -1,6 +1,8 @@
-import React, { Component, SyntheticEvent, useState } from "react";
+import React, { Component } from "react";
 import Button from "../common/Button";
 import TextField from "../common/TextField";
+import { connect } from "react-redux";
+import { userRegisterAction } from "../../actions/userActions";
 
 type State = {
   firstName: string;
@@ -10,7 +12,11 @@ type State = {
   passwordConfirmation: string;
 };
 
-export class RegisterForm extends Component<{}, State> {
+type Props = {
+  userRegisterAction(data: State): Promise<void>;
+};
+
+export class RegisterForm extends Component<Props, State> {
   state: State = {
     firstName: "",
     lastName: "",
@@ -21,7 +27,10 @@ export class RegisterForm extends Component<{}, State> {
 
   onUpdate(e: React.ChangeEvent<HTMLInputElement>) {
     this.setState({ ...this.state, [e.target.name]: e.target.value });
-    console.log(this.state);
+  }
+
+  onSubmit() {
+    this.props.userRegisterAction(this.state);
   }
 
   render() {
@@ -71,7 +80,7 @@ export class RegisterForm extends Component<{}, State> {
         </div>
 
         <div className="mb-4">
-          <Button onClick={() => {}} primary>
+          <Button onClick={this.onSubmit.bind(this)} primary>
             Register
           </Button>
         </div>
@@ -81,4 +90,8 @@ export class RegisterForm extends Component<{}, State> {
   }
 }
 
-export default RegisterForm;
+const mapStateToProps = (state) => ({
+  ...state,
+});
+
+export default connect(mapStateToProps, { userRegisterAction })(RegisterForm);
