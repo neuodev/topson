@@ -5,21 +5,24 @@ import { connect } from "react-redux";
 import { userRegisterAction } from "../../actions/userActions";
 
 type State = {
-  firstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
   email: string;
   password: string;
   passwordConfirmation: string;
+  username: string;
 };
 
 type Props = {
   userRegisterAction(data: State): Promise<void>;
+  // register: ;
 };
 
 export class RegisterForm extends Component<Props, State> {
   state: State = {
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
+    username: "",
     email: "",
     password: "",
     passwordConfirmation: "",
@@ -29,7 +32,7 @@ export class RegisterForm extends Component<Props, State> {
     this.setState({ ...this.state, [e.target.name]: e.target.value });
   }
 
-  onSubmit() {
+  async onSubmit() {
     this.props.userRegisterAction(this.state);
   }
 
@@ -38,18 +41,27 @@ export class RegisterForm extends Component<Props, State> {
       <div className="w-96 bg-white px-8 py-10 rounded-lg shadow-2xl">
         <div className="mb-6">
           <TextField
-            name="firstName"
-            value={this.state.firstName}
+            name="first_name"
+            value={this.state.first_name}
+            // error={this.props.register.first_name[0]}
             onChange={this.onUpdate.bind(this)}
             placeholder="First Name"
           />
         </div>
         <div className="mb-6">
           <TextField
-            name="lastName"
-            value={this.state.lastName}
+            name="last_name"
+            value={this.state.last_name}
             onChange={this.onUpdate.bind(this)}
             placeholder="Last Name"
+          />
+        </div>
+        <div className="mb-6">
+          <TextField
+            name="username"
+            value={this.state.username}
+            onChange={this.onUpdate.bind(this)}
+            placeholder="Username"
           />
         </div>
         <div className="mb-6">
@@ -91,7 +103,7 @@ export class RegisterForm extends Component<Props, State> {
 }
 
 const mapStateToProps = (state) => ({
-  ...state,
+  register: state.register,
 });
 
 export default connect(mapStateToProps, { userRegisterAction })(RegisterForm);
